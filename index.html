@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Meme Coin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .content-section {
+            background: radial-gradient(circle, #5d9bde, #4a90e2);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px auto;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .content-section:hover {
+            transform: scale(1.05);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 15px;
+            font-size: 1.2em;
+            color: #fff;
+            background: linear-gradient(45deg, #007bff, #00c6ff);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background: linear-gradient(45deg, #0056b3, #007bff);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 15px;
+            transition: transform 0.5s;
+        }
+
+        img:hover {
+            transform: rotate(3deg) scale(1.05);
+        }
+
+        .divider {
+            background-image: url('divider_image.png');
+            background-size: cover;
+            height: 150px;
+            margin: 40px 0;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #111;
+            color: #fff;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Style for copy message */
+        #copy-message {
+            display: none;
+            margin-bottom: 10px;
+            color: #0056b3;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Turbo Meme Coin</h1>
+            <p>A MEME COIN FOR THE PEOPLE, POWERED BY AI</p>
+        </header>
+
+        <section class="content-section">
+            <!-- Copy button -->
+            <button class="button" id="copy-button">ca : ihfboiezphfjipqf</button>
+            <div id="copy-message">Text copied!</div>
+
+            <img src="images/Design sans titre (1).png" alt="Turbo Meme Image">
+            <h2>About Turbo</h2>
+            <p>Turbo is a decentralized, community-driven crypto adventure. Created as an experiment by leveraging AI to make the next great meme coin, starting with only $69!</p>
+            
+            <!-- Buttons with fictitious links -->
+            <button class="button" onclick="window.location.href='#'">Telegram</button>
+            <button class="button" onclick="window.location.href='#'">Twitter</button>
+            <button class="button" onclick="window.location.href='#'">MovePump</button>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="content-section">
+            <img src="images/home-banner.png" alt="Frog in Car Image" style="max-width: 40%;">
+            <h2>Get on Board!</h2>
+            <p>Be part of the funniest and fastest-growing community. Turbo Coin is the ultimate meme token experience!</p>
+            <button class="button" onclick="window.location.href='#'">Join the Adventure!</button>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="content-section">
+            <h2>Roadmap</h2>
+            <p>Click to burn more tokens</p>
+            <div id="clicker-game" style="position: relative; display: inline-block; cursor: pointer;">
+                <img src="images/custom-image.png" alt="Roadmap Image" style="max-width: 30%;">
+                <div id="click-count" style="position: absolute; top: -10px; left: 50%; transform: translate(-50%, 0); font-size: 2em; color: #ff0055; text-align: center; background: rgba(0, 0, 0, 0.6); padding: 10px; border-radius: 10px;">Clicks: 0</div>
+            </div>
+        </section>
+
+        <script>
+            // Copy functionality
+            const copyButton = document.getElementById('copy-button');
+            const copyMessage = document.getElementById('copy-message');
+
+            copyButton.addEventListener('click', () => {
+                // Extract the text after the colon
+                const fullText = copyButton.textContent;
+                const parts = fullText.split(':');
+                if (parts.length > 1) {
+                    const textToCopy = parts[1].trim();
+                    // Copy the text to the clipboard
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        // Show confirmation message
+                        copyMessage.style.display = 'block';
+                        setTimeout(() => {
+                            copyMessage.style.display = 'none';
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Error copying: ', err);
+                    });
+                }
+            });
+
+            // Clicker game functionality
+            const clickerGame = document.getElementById('clicker-game');
+            const clickCountDisplay = document.getElementById('click-count');
+            let clickCount = 0;
+
+            clickerGame.addEventListener('click', () => {
+                clickCount++;
+                clickCountDisplay.textContent = `Clicks: ${clickCount}`;
+                clickCountDisplay.classList.add('pop-animation');
+                setTimeout(() => clickCountDisplay.classList.remove('pop-animation'), 300);
+            });
+        </script>
+
+        <div class="divider"></div>
+
+        <footer>
+            <p>Turbo &copy; 2024. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
